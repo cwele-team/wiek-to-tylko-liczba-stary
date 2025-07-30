@@ -1,0 +1,306 @@
+2025-07-30 21:53:46 - Webhook called
+2025-07-30 21:53:46 - Raw POST: {"transactionId":"KGRLX9SAdZF3Jnq1Xo368oYH2UGcPKsb","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":9.99,"notificationAttempt":5,"paymentType":"TRANSFER","apiVersion":1,"signature":"e1eab92979f076eb799c486f5eca568d7ae4446dcffee441e1e1384d2088a095"}
+2025-07-30 21:53:46 - Decoded JSON: Array
+(
+    [transactionId] => KGRLX9SAdZF3Jnq1Xo368oYH2UGcPKsb
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 9.99
+    [notificationAttempt] => 5
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => e1eab92979f076eb799c486f5eca568d7ae4446dcffee441e1e1384d2088a095
+)
+
+2025-07-30 21:53:46 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|KGRLX9SAdZF3Jnq1Xo368oYH2UGcPKsb|6-4|bres.maksymilian@wp.pl|9.99|5|TRANSFER|1
+2025-07-30 21:53:46 - Calculated signature: e1eab92979f076eb799c486f5eca568d7ae4446dcffee441e1e1384d2088a095
+2025-07-30 21:53:46 - Received signature: e1eab92979f076eb799c486f5eca568d7ae4446dcffee441e1e1384d2088a095
+2025-07-30 21:53:46 - Signature verification: OK
+2025-07-30 21:53:46 - Parsed userId: 6, movieId: 4
+2025-07-30 21:53:46 - Movie found, license type: 1
+2025-07-30 21:53:46 - Transaction already exists with status: PENDING
+2025-07-30 21:53:46 - Updated payment status from PENDING to PAID
+2025-07-30 21:54:16 - Webhook called
+2025-07-30 21:54:16 - Raw POST: {"transactionId":"kRXBXYk2XC5s71JRrJVn8O3gnuSevz2i","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":8,"paymentType":"TRANSFER","apiVersion":1,"signature":"ea590c28cdb96558847e988204498250394dea4450a75046165eed0228451b06"}
+2025-07-30 21:54:16 - Decoded JSON: Array
+(
+    [transactionId] => kRXBXYk2XC5s71JRrJVn8O3gnuSevz2i
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 8
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => ea590c28cdb96558847e988204498250394dea4450a75046165eed0228451b06
+)
+
+2025-07-30 21:54:16 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|kRXBXYk2XC5s71JRrJVn8O3gnuSevz2i|6-4|bres.maksymilian@wp.pl|6.00|8|TRANSFER|1
+2025-07-30 21:54:16 - Calculated signature: ea590c28cdb96558847e988204498250394dea4450a75046165eed0228451b06
+2025-07-30 21:54:16 - Received signature: ea590c28cdb96558847e988204498250394dea4450a75046165eed0228451b06
+2025-07-30 21:54:16 - Signature verification: OK
+2025-07-30 21:54:16 - Parsed userId: 6, movieId: 4
+2025-07-30 21:54:16 - Movie found, license type: 1
+2025-07-30 21:54:16 - Transaction already exists with status: PENDING
+2025-07-30 21:54:16 - Updated payment status from PENDING to PAID
+2025-07-30 21:54:26 - Webhook called
+2025-07-30 21:54:26 - Raw POST: {"transactionId":"7J8xouxzXwmZ2hO8kVxKBzjko6KT3CXO","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":10,"paymentType":"TRANSFER","apiVersion":1,"signature":"eb83139949a702b86a5b4f9d6686fc842c64f3e373b6f5cd0464a716f9cc609a"}
+2025-07-30 21:54:26 - Decoded JSON: Array
+(
+    [transactionId] => 7J8xouxzXwmZ2hO8kVxKBzjko6KT3CXO
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 10
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => eb83139949a702b86a5b4f9d6686fc842c64f3e373b6f5cd0464a716f9cc609a
+)
+
+2025-07-30 21:54:26 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|7J8xouxzXwmZ2hO8kVxKBzjko6KT3CXO|6-4|bres.maksymilian@wp.pl|6.00|10|TRANSFER|1
+2025-07-30 21:54:26 - Calculated signature: eb83139949a702b86a5b4f9d6686fc842c64f3e373b6f5cd0464a716f9cc609a
+2025-07-30 21:54:26 - Received signature: eb83139949a702b86a5b4f9d6686fc842c64f3e373b6f5cd0464a716f9cc609a
+2025-07-30 21:54:26 - Signature verification: OK
+2025-07-30 21:54:26 - Parsed userId: 6, movieId: 4
+2025-07-30 21:54:26 - Movie found, license type: 1
+2025-07-30 21:54:26 - Transaction already exists with status: PENDING
+2025-07-30 21:54:26 - Updated payment status from PENDING to PAID
+2025-07-30 21:54:46 - Webhook called
+2025-07-30 21:54:46 - Raw POST: {"transactionId":"eskpHSBF1lnlPKHzLPizoeB93gdT9vUP","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":11,"paymentType":"TRANSFER","apiVersion":1,"signature":"e8dbde217080867600396cefb672ae5c80624b9cf7a43f6cddd036d590896a90"}
+2025-07-30 21:54:46 - Decoded JSON: Array
+(
+    [transactionId] => eskpHSBF1lnlPKHzLPizoeB93gdT9vUP
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 11
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => e8dbde217080867600396cefb672ae5c80624b9cf7a43f6cddd036d590896a90
+)
+
+2025-07-30 21:54:46 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|eskpHSBF1lnlPKHzLPizoeB93gdT9vUP|6-4|bres.maksymilian@wp.pl|6.00|11|TRANSFER|1
+2025-07-30 21:54:46 - Calculated signature: e8dbde217080867600396cefb672ae5c80624b9cf7a43f6cddd036d590896a90
+2025-07-30 21:54:46 - Received signature: e8dbde217080867600396cefb672ae5c80624b9cf7a43f6cddd036d590896a90
+2025-07-30 21:54:46 - Signature verification: OK
+2025-07-30 21:54:46 - Parsed userId: 6, movieId: 4
+2025-07-30 21:54:46 - Movie found, license type: 1
+2025-07-30 21:54:46 - Transaction already exists with status: PENDING
+2025-07-30 21:54:46 - Updated payment status from PENDING to PAID
+2025-07-30 21:55:01 - Webhook called
+2025-07-30 21:55:01 - Raw POST: {"transactionId":"wyYatJrmSjIdCjbSjhbAgaIOWeZpQU7E","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":9.99,"notificationAttempt":0,"paymentType":"TRANSFER","apiVersion":1,"signature":"40f0f38be29dd2c0d086c7b9314f8e2277ecfb7d47a90263b045e9307994ceca"}
+2025-07-30 21:55:01 - Decoded JSON: Array
+(
+    [transactionId] => wyYatJrmSjIdCjbSjhbAgaIOWeZpQU7E
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 9.99
+    [notificationAttempt] => 0
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 40f0f38be29dd2c0d086c7b9314f8e2277ecfb7d47a90263b045e9307994ceca
+)
+
+2025-07-30 21:55:01 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|wyYatJrmSjIdCjbSjhbAgaIOWeZpQU7E|6-4|bres.maksymilian@wp.pl|9.99|0|TRANSFER|1
+2025-07-30 21:55:01 - Calculated signature: 40f0f38be29dd2c0d086c7b9314f8e2277ecfb7d47a90263b045e9307994ceca
+2025-07-30 21:55:01 - Received signature: 40f0f38be29dd2c0d086c7b9314f8e2277ecfb7d47a90263b045e9307994ceca
+2025-07-30 21:55:01 - Signature verification: OK
+2025-07-30 21:55:01 - Parsed userId: 6, movieId: 4
+2025-07-30 21:55:01 - Movie found, license type: 1
+2025-07-30 21:55:01 - Transaction is new
+2025-07-30 21:55:01 - Payment status determined: PAID
+2025-07-30 21:55:01 - Payment saved with ID: 59, status: PAID
+2025-07-30 21:55:01 - Subscription added for user 6, movie 4
+2025-07-30 21:55:01 - Response OK sent
+2025-07-30 21:55:01 - === WEBHOOK END ===
+2025-07-30 21:55:16 - Webhook called
+2025-07-30 21:55:16 - Raw POST: {"transactionId":"MGtYBUTLdECewdoSFUuuFZY8WQxG8cVY","control":"8-1","email":"5%@5","amountPaid":19.99,"notificationAttempt":6,"paymentType":"TRANSFER","apiVersion":1,"signature":"87e9e9e9937741d3cdbf5f43c3f5f16b4fe8a53a0acd0607fbabd3052cd43826"}
+2025-07-30 21:55:16 - Decoded JSON: Array
+(
+    [transactionId] => MGtYBUTLdECewdoSFUuuFZY8WQxG8cVY
+    [control] => 8-1
+    [email] => 5%@5
+    [amountPaid] => 19.99
+    [notificationAttempt] => 6
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 87e9e9e9937741d3cdbf5f43c3f5f16b4fe8a53a0acd0607fbabd3052cd43826
+)
+
+2025-07-30 21:55:16 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|MGtYBUTLdECewdoSFUuuFZY8WQxG8cVY|8-1|5%@5|19.99|6|TRANSFER|1
+2025-07-30 21:55:16 - Calculated signature: 87e9e9e9937741d3cdbf5f43c3f5f16b4fe8a53a0acd0607fbabd3052cd43826
+2025-07-30 21:55:16 - Received signature: 87e9e9e9937741d3cdbf5f43c3f5f16b4fe8a53a0acd0607fbabd3052cd43826
+2025-07-30 21:55:16 - Signature verification: OK
+2025-07-30 21:55:16 - Parsed userId: 8, movieId: 1
+2025-07-30 21:55:16 - Movie found, license type: 2
+2025-07-30 21:55:16 - Transaction already exists with status: PENDING
+2025-07-30 21:55:16 - Updated payment status from PENDING to PAID
+2025-07-30 21:55:16 - Webhook called
+2025-07-30 21:55:16 - Raw POST: {"transactionId":"JQWgKadOQVdkDvyFQrKssCQ4BRPvjizU","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":9,"paymentType":"TRANSFER","apiVersion":1,"signature":"c8b679a6c024dfef44f7f53def6e174f63925ad71914946a83c8925628b3419a"}
+2025-07-30 21:55:16 - Decoded JSON: Array
+(
+    [transactionId] => JQWgKadOQVdkDvyFQrKssCQ4BRPvjizU
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 9
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => c8b679a6c024dfef44f7f53def6e174f63925ad71914946a83c8925628b3419a
+)
+
+2025-07-30 21:55:16 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|JQWgKadOQVdkDvyFQrKssCQ4BRPvjizU|6-4|bres.maksymilian@wp.pl|6.00|9|TRANSFER|1
+2025-07-30 21:55:16 - Calculated signature: c8b679a6c024dfef44f7f53def6e174f63925ad71914946a83c8925628b3419a
+2025-07-30 21:55:16 - Received signature: c8b679a6c024dfef44f7f53def6e174f63925ad71914946a83c8925628b3419a
+2025-07-30 21:55:16 - Signature verification: OK
+2025-07-30 21:55:16 - Parsed userId: 6, movieId: 4
+2025-07-30 21:55:16 - Movie found, license type: 1
+2025-07-30 21:55:16 - Transaction already exists with status: PENDING
+2025-07-30 21:55:16 - Updated payment status from PENDING to PAID
+2025-07-30 21:55:16 - Webhook called
+2025-07-30 21:55:16 - Raw POST: {"transactionId":"Zg6ZMJ1ZuapRLfa4A2G1TxABENsbGZs9","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":9.99,"notificationAttempt":6,"paymentType":"TRANSFER","apiVersion":1,"signature":"d18cf4d4117295099cf89c1a2845583c027dc8d2f0e3c98eff61344a7251d956"}
+2025-07-30 21:55:16 - Decoded JSON: Array
+(
+    [transactionId] => Zg6ZMJ1ZuapRLfa4A2G1TxABENsbGZs9
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 9.99
+    [notificationAttempt] => 6
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => d18cf4d4117295099cf89c1a2845583c027dc8d2f0e3c98eff61344a7251d956
+)
+
+2025-07-30 21:55:16 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|Zg6ZMJ1ZuapRLfa4A2G1TxABENsbGZs9|6-4|bres.maksymilian@wp.pl|9.99|6|TRANSFER|1
+2025-07-30 21:55:16 - Calculated signature: d18cf4d4117295099cf89c1a2845583c027dc8d2f0e3c98eff61344a7251d956
+2025-07-30 21:55:16 - Received signature: d18cf4d4117295099cf89c1a2845583c027dc8d2f0e3c98eff61344a7251d956
+2025-07-30 21:55:16 - Signature verification: OK
+2025-07-30 21:55:16 - Parsed userId: 6, movieId: 4
+2025-07-30 21:55:16 - Movie found, license type: 1
+2025-07-30 21:55:16 - Transaction already exists with status: PENDING
+2025-07-30 21:55:16 - Updated payment status from PENDING to PAID
+2025-07-30 21:56:16 - Webhook called
+2025-07-30 21:56:16 - Raw POST: {"transactionId":"ipjgOFo7p7T2uvyTWRr1T3p9O1vYgFnc","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":8,"paymentType":"TRANSFER","apiVersion":1,"signature":"6ecf81bc8ff4d3fd8b06e5d07f8fab0a77c9cc645a34128ef4bc27fd4e87c015"}
+2025-07-30 21:56:16 - Decoded JSON: Array
+(
+    [transactionId] => ipjgOFo7p7T2uvyTWRr1T3p9O1vYgFnc
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 8
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 6ecf81bc8ff4d3fd8b06e5d07f8fab0a77c9cc645a34128ef4bc27fd4e87c015
+)
+
+2025-07-30 21:56:16 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|ipjgOFo7p7T2uvyTWRr1T3p9O1vYgFnc|6-4|bres.maksymilian@wp.pl|6.00|8|TRANSFER|1
+2025-07-30 21:56:16 - Calculated signature: 6ecf81bc8ff4d3fd8b06e5d07f8fab0a77c9cc645a34128ef4bc27fd4e87c015
+2025-07-30 21:56:16 - Received signature: 6ecf81bc8ff4d3fd8b06e5d07f8fab0a77c9cc645a34128ef4bc27fd4e87c015
+2025-07-30 21:56:16 - Signature verification: OK
+2025-07-30 21:56:16 - Parsed userId: 6, movieId: 4
+2025-07-30 21:56:16 - Movie found, license type: 1
+2025-07-30 21:56:16 - Transaction already exists with status: PENDING
+2025-07-30 21:56:16 - Updated payment status from PENDING to PAID
+2025-07-30 21:56:36 - Webhook called
+2025-07-30 21:56:36 - Raw POST: {"transactionId":"OcVuJQtBx9Ei93p5xJrlOx4K2xJBrSMt","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":11,"paymentType":"TRANSFER","apiVersion":1,"signature":"d13cf0ac164122697a03abae40e2c5962a2d139cab1960eebbbcd249a3322fe9"}
+2025-07-30 21:56:36 - Decoded JSON: Array
+(
+    [transactionId] => OcVuJQtBx9Ei93p5xJrlOx4K2xJBrSMt
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 11
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => d13cf0ac164122697a03abae40e2c5962a2d139cab1960eebbbcd249a3322fe9
+)
+
+2025-07-30 21:56:36 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|OcVuJQtBx9Ei93p5xJrlOx4K2xJBrSMt|6-4|bres.maksymilian@wp.pl|6.00|11|TRANSFER|1
+2025-07-30 21:56:36 - Calculated signature: d13cf0ac164122697a03abae40e2c5962a2d139cab1960eebbbcd249a3322fe9
+2025-07-30 21:56:36 - Received signature: d13cf0ac164122697a03abae40e2c5962a2d139cab1960eebbbcd249a3322fe9
+2025-07-30 21:56:36 - Signature verification: OK
+2025-07-30 21:56:36 - Parsed userId: 6, movieId: 4
+2025-07-30 21:56:36 - Movie found, license type: 1
+2025-07-30 21:56:36 - Transaction already exists with status: PENDING
+2025-07-30 21:56:36 - Updated payment status from PENDING to PAID
+2025-07-30 21:56:56 - Webhook called
+2025-07-30 21:56:56 - Raw POST: {"transactionId":"M22Ofp1jOjwEwYHkMjM7xPrybfT2OLDA","control":"8-1","email":"a@a","amountPaid":6,"notificationAttempt":12,"paymentType":"TRANSFER","apiVersion":1,"signature":"573a8c8cf3e2aebd2f84f19be40aa1bbe94ac5918098ae1b1554c2bd4ca081de"}
+2025-07-30 21:56:56 - Decoded JSON: Array
+(
+    [transactionId] => M22Ofp1jOjwEwYHkMjM7xPrybfT2OLDA
+    [control] => 8-1
+    [email] => a@a
+    [amountPaid] => 6
+    [notificationAttempt] => 12
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 573a8c8cf3e2aebd2f84f19be40aa1bbe94ac5918098ae1b1554c2bd4ca081de
+)
+
+2025-07-30 21:56:56 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|M22Ofp1jOjwEwYHkMjM7xPrybfT2OLDA|8-1|a@a|6.00|12|TRANSFER|1
+2025-07-30 21:56:56 - Calculated signature: 573a8c8cf3e2aebd2f84f19be40aa1bbe94ac5918098ae1b1554c2bd4ca081de
+2025-07-30 21:56:56 - Received signature: 573a8c8cf3e2aebd2f84f19be40aa1bbe94ac5918098ae1b1554c2bd4ca081de
+2025-07-30 21:56:56 - Signature verification: OK
+2025-07-30 21:56:56 - Parsed userId: 8, movieId: 1
+2025-07-30 21:56:56 - Webhook called
+2025-07-30 21:56:56 - Raw POST: {"transactionId":"IKiyiybQ58JAn544lq1e0upj9vNShSta","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":12,"paymentType":"TRANSFER","apiVersion":1,"signature":"8c4fd39e6a0383f21ce496c3863d6b8e8596fdd2376b45e67fe7ec69bb961e09"}
+2025-07-30 21:56:56 - Decoded JSON: Array
+(
+    [transactionId] => IKiyiybQ58JAn544lq1e0upj9vNShSta
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 12
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 8c4fd39e6a0383f21ce496c3863d6b8e8596fdd2376b45e67fe7ec69bb961e09
+)
+
+2025-07-30 21:56:56 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|IKiyiybQ58JAn544lq1e0upj9vNShSta|6-4|bres.maksymilian@wp.pl|6.00|12|TRANSFER|1
+2025-07-30 21:56:56 - Calculated signature: 8c4fd39e6a0383f21ce496c3863d6b8e8596fdd2376b45e67fe7ec69bb961e09
+2025-07-30 21:56:56 - Received signature: 8c4fd39e6a0383f21ce496c3863d6b8e8596fdd2376b45e67fe7ec69bb961e09
+2025-07-30 21:56:56 - Signature verification: OK
+2025-07-30 21:56:56 - Parsed userId: 6, movieId: 4
+2025-07-30 21:56:56 - Movie found, license type: 1
+2025-07-30 21:56:56 - Movie found, license type: 2
+2025-07-30 21:56:56 - Transaction already exists with status: PENDING
+2025-07-30 21:56:56 - Transaction already exists with status: PENDING
+2025-07-30 21:56:56 - Updated payment status from PENDING to PAID
+2025-07-30 21:56:56 - Updated payment status from PENDING to PAID
+2025-07-30 21:57:06 - Webhook called
+2025-07-30 21:57:06 - Raw POST: {"transactionId":"0VZFzdieCzdBztTLfllmFBKdQwZFOnCH","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":11,"paymentType":"TRANSFER","apiVersion":1,"signature":"6dce55a014418b66d4dc8fe2b4dad1d55d55dcf22b07be012fc2bbfe2ce15c58"}
+2025-07-30 21:57:06 - Decoded JSON: Array
+(
+    [transactionId] => 0VZFzdieCzdBztTLfllmFBKdQwZFOnCH
+    [control] => 6-4
+    [email] => bres.maksymilian@wp.pl
+    [amountPaid] => 6
+    [notificationAttempt] => 11
+    [paymentType] => TRANSFER
+    [apiVersion] => 1
+    [signature] => 6dce55a014418b66d4dc8fe2b4dad1d55d55dcf22b07be012fc2bbfe2ce15c58
+)
+
+2025-07-30 21:57:06 - Sign string: Tp5Ji6Sw3Md8Yh3P@9I@9Rz2Mo8Fk5Of|0VZFzdieCzdBztTLfllmFBKdQwZFOnCH|6-4|bres.maksymilian@wp.pl|6.00|11|TRANSFER|1
+2025-07-30 21:57:06 - Calculated signature: 6dce55a014418b66d4dc8fe2b4dad1d55d55dcf22b07be012fc2bbfe2ce15c58
+2025-07-30 21:57:06 - Received signature: 6dce55a014418b66d4dc8fe2b4dad1d55d55dcf22b07be012fc2bbfe2ce15c58
+2025-07-30 21:57:06 - Signature verification: OK
+2025-07-30 21:57:06 - Parsed userId: 6, movieId: 4
+2025-07-30 21:57:06 - Movie found, license type: 1
+2025-07-30 21:57:06 - Transaction already exists with status: PENDING
+2025-07-30 21:57:06 - Updated payment status from PENDING to PAID
+2025-07-30 21:58:01 - === WEBHOOK START (Attempt: unknown) ===
+2025-07-30 21:58:01 - Raw POST: {"transactionId":"yzP8ceZ3T4LLV7VBA0Kz7KKYRs1Ogh4E","control":"6-4","email":"bres.maksymilian@wp.pl","amountPaid":9.99,"notificationAttempt":0,"paymentType":"TRANSFER","apiVersion":1,"signature":"80d8bc9780eb23dad48685dfab669b300c1504676582804073793d5818276ade"}
+2025-07-30 21:58:01 - Processing notification attempt: 0
+2025-07-30 21:58:01 - Signature verification: OK
+2025-07-30 21:58:01 - NEW payment saved with ID: 60
+2025-07-30 21:58:01 - NEW subscription added
+2025-07-30 21:58:01 - Response: OK (attempt 0)
+2025-07-30 21:58:01 - === WEBHOOK END ===
+2025-07-30 22:01:17 - === WEBHOOK START (Attempt: unknown) ===
+2025-07-30 22:01:17 - Raw POST: {"transactionId":"jD7ZnnkAepsqJsLKWW3CNfOjszpBRUcR","control":"7-1","email":"bres.maksymilian@wp.pl","amountPaid":6,"notificationAttempt":86,"paymentType":"TRANSFER","apiVersion":1,"signature":"30d3e0d3694899527e73ed388cb997029da0c6f9ab23936fd50be1feaa7f4930"}
+2025-07-30 22:01:17 - Processing notification attempt: 86
+2025-07-30 22:01:17 - Signature verification: OK
+2025-07-30 22:01:17 - NEW payment saved with ID: 61
+2025-07-30 22:01:17 - NEW subscription added
+2025-07-30 22:01:17 - Response: OK (attempt 86)
+2025-07-30 22:01:17 - === WEBHOOK END ===
