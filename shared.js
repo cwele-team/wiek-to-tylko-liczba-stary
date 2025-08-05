@@ -80,7 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('.mobile-menu');
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
             mobileMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
         });
     }
 
@@ -92,9 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!searchOpen) {
                 const searchForm = document.createElement('form');
                 searchForm.className = 'search-form';
+                searchForm.setAttribute('role', 'search');
+                searchForm.setAttribute('aria-label', 'Wyszukiwanie filmów');
                 searchForm.innerHTML = `
-                    <input type="search" placeholder="Wyszukaj film..." class="search-input">
-                    <button type="button" class="search-close">
+                    <label for="search-input" class="sr-only">Wyszukaj film</label>
+                    <input type="search" id="search-input" placeholder="Wyszukaj film..." class="search-input" aria-label="Wpisz tytuł filmu do wyszukania">
+                    <button type="button" class="search-close" aria-label="Zamknij wyszukiwarkę">
                         <i data-lucide="x"></i>
                     </button>
                 `;
@@ -103,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 lucide.createIcons();
                 searchOpen = true;
 
-                const searchInput = searchForm.querySelector('input');
+                const searchInput = searchForm.querySelector('#search-input');
                 searchInput.focus();
 
                 // Add search functionality with debouncing
@@ -132,6 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchOpen = false;
                     // Clear any search results
                     clearSearchResults();
+                    // Return focus to search toggle
+                    searchToggle.focus();
                 });
 
                 // Close search on Escape key
@@ -140,6 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         searchForm.remove();
                         searchOpen = false;
                         clearSearchResults();
+                        // Return focus to search toggle
+                        searchToggle.focus();
                     }
                 });
             }
@@ -323,6 +332,8 @@ function showSearchDropdown(searchTerm, searchResults) {
 
     const searchDropdown = document.createElement('div');
     searchDropdown.className = 'search-dropdown';
+    searchDropdown.setAttribute('role', 'listbox');
+    searchDropdown.setAttribute('aria-label', 'Wyniki wyszukiwania');
 
     if (searchResults.length > 0) {
         searchDropdown.innerHTML = `
@@ -335,8 +346,8 @@ function showSearchDropdown(searchTerm, searchResults) {
                     // This is important for setupMovieOverlay to work correctly
                     const originalIndex = window.movies ? window.movies.findIndex(m => m.id === movie.id) : -1;
                     return `
-                        <div class="search-result-item" data-movie-id="${originalIndex !== -1 ? originalIndex : movie.id}" data-movie-db-id="${movie.id}">
-                            <img src="${movie.imageUrl}" alt="${movie.title}" class="search-result-poster">
+                        <div class="search-result-item" data-movie-id="${originalIndex !== -1 ? originalIndex : movie.id}" data-movie-db-id="${movie.id}" role="option" tabindex="0" aria-label="Film ${movie.title}, ${movie.year}, ocena ${movie.rating}">
+                            <img src="${movie.imageUrl}" alt="Plakat filmu ${movie.title}" class="search-result-poster">
                             <div class="search-result-info">
                                 <h4 class="search-result-title">${movie.title}</h4>
                                 <p class="search-result-meta">${movie.year} • ${movie.rating}</p>
@@ -357,7 +368,7 @@ function showSearchDropdown(searchTerm, searchResults) {
 
         // Add click handlers for search results
         searchDropdown.querySelectorAll('.search-result-item').forEach(item => {
-            item.addEventListener('click', () => {
+            const handleItemActivation = () => {
                 const movieId = parseInt(item.dataset.movieId); // This is the index in window.movies
                 const movieDbId = parseInt(item.dataset.movieDbId); // This is the actual DB ID
 
@@ -384,16 +395,19 @@ function showSearchDropdown(searchTerm, searchResults) {
 
                     const overlay = document.createElement('div');
                     overlay.className = 'movie-details-overlay';
+                    overlay.setAttribute('role', 'dialog');
+                    overlay.setAttribute('aria-modal', 'true');
+                    overlay.setAttribute('aria-labelledby', 'search-movie-details-title');
 
                     overlay.innerHTML = `
                         <div class="movie-details-content" data-movie-id="${movieId}" data-movie-db-id="${movieDbId}">
-                            <button class="movie-details-close">
+                            <button class="movie-details-close" aria-label="Zamknij szczegóły filmu">
                                 <i data-lucide="x"></i>
                             </button>
                             <div class="movie-details-header">
-                                <img src="${movieData.imageUrl}" alt="${movieData.title}" class="movie-details-poster">
+                                <img src="${movieData.imageUrl}" alt="Plakat filmu ${movieData.title}" class="movie-details-poster">
                                 <div class="movie-details-info">
-                                    <h1 class="movie-details-title">${movieData.title}</h1>
+                                    <h1 id="search-movie-details-title" class="movie-details-title">${movieData.title}</h1>
                                     <div class="movie-details-meta">
                                         <span class="movie-details-genre">${movieData.genre}</span>
                                         <span class="movie-details-rating">
@@ -403,11 +417,11 @@ function showSearchDropdown(searchTerm, searchResults) {
                                     </div>
                                     <p class="movie-details-description">${movieData.description}</p>
                                     <div class="movie-details-actions">
-                                        <a href="player.html?id=${movieId}" class="btn btn-primary play-button">
+                                        <a href="player.html?id=${movieId}" class="btn btn-primary play-button" aria-label="Odtwórz film ${movieData.title}">
                                             <i data-lucide="play"></i>
                                             <span>Odtwórz film</span>
                                         </a>
-                                        <button class="btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button">
+                                        <button class="btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button" aria-label="${inWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia'}">
                                             <i data-lucide="${inWatchlist ? 'check' : 'plus'}"></i>
                                             <span>${inWatchlist ? 'Usuń z listy' : 'Dodaj do listy'}</span>
                                         </button>
@@ -425,17 +439,30 @@ function showSearchDropdown(searchTerm, searchResults) {
                         overlay.classList.add('active');
                     });
 
-                    // Setup close functionality
+                    // Focus the close button for keyboard users
                     const closeButton = overlay.querySelector('.movie-details-close');
+                    closeButton.focus();
+
+                    // Setup close functionality
                     closeButton.addEventListener('click', () => {
                         overlay.classList.remove('active');
-                        setTimeout(() => overlay.remove(), 300);
+                        setTimeout(() => {
+                            overlay.remove();
+                            // Return focus to search toggle
+                            const searchToggle = document.querySelector('.search-toggle');
+                            if (searchToggle) searchToggle.focus();
+                        }, 300);
                     });
 
                     // Close on escape or click outside
                     const closeOverlay = () => {
                         overlay.classList.remove('active');
-                        setTimeout(() => overlay.remove(), 300);
+                        setTimeout(() => {
+                            overlay.remove();
+                            // Return focus to search toggle
+                            const searchToggle = document.querySelector('.search-toggle');
+                            if (searchToggle) searchToggle.focus();
+                        }, 300);
                     };
 
                     overlay.addEventListener('click', (e) => {
@@ -463,6 +490,7 @@ function showSearchDropdown(searchTerm, searchResults) {
                             // Re-render the button state after action
                             const updatedInWatchlist = await isInWatchlist(movieId);
                             watchlistButton.className = `btn ${updatedInWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button`;
+                            watchlistButton.setAttribute('aria-label', updatedInWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia');
                             watchlistButton.innerHTML = `
                                 <i data-lucide="${updatedInWatchlist ? 'check' : 'plus'}"></i>
                                 <span>${updatedInWatchlist ? 'Usuń z listy' : 'Dodaj do listy'}</span>
@@ -477,6 +505,15 @@ function showSearchDropdown(searchTerm, searchResults) {
                 } else {
                     // Redirect to player page if overlay not available or movieData is missing
                     window.location.href = `player.html?id=${movieId}`;
+                }
+            };
+
+            // Add both click and keyboard event listeners
+            item.addEventListener('click', handleItemActivation);
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleItemActivation();
                 }
             });
         });

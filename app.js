@@ -286,8 +286,8 @@ async function ensureCategoriesLoaded() {
       const watchlistText = 'Dodaj do listy';
 
       return `
-        <div class="movie-card" data-movie-id="${index}">
-          <img src="${movie.imageUrl}" alt="${movie.title}">
+        <div class="movie-card" data-movie-id="${index}" tabindex="0" role="button" aria-label="Otwórz szczegóły filmu ${movie.title}">
+          <img src="${movie.imageUrl}" alt="Plakat filmu ${movie.title}">
           <div class="movie-card-overlay"></div>
           <span class="movie-category">${primaryCategory}</span>
           <span class="movie-duration">${movie.duration}</span>
@@ -361,6 +361,7 @@ async function ensureCategoriesLoaded() {
 
         // Update class and content
         featuredWatchlistButton.className = `btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'}`;
+        featuredWatchlistButton.setAttribute('aria-label', inWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia');
         featuredWatchlistButton.innerHTML = `
           <i data-lucide="${inWatchlist ? 'check' : 'plus'}"></i>
           <span>${inWatchlist ? 'Usuń z listy' : 'Dodaj do listy'}</span>
@@ -412,6 +413,7 @@ async function ensureCategoriesLoaded() {
       const inWatchlist = await isInWatchlist(currentFeaturedMovieIndex);
 
       featuredMovie.querySelector('.featured-backdrop').style.backgroundImage = `url(${randomMovie.imageUrl})`;
+      featuredMovie.querySelector('.featured-backdrop').setAttribute('aria-hidden', 'true');
       featuredMovie.querySelector('.featured-title').textContent = randomMovie.title;
       featuredMovie.querySelector('.rating').textContent = randomMovie.rating;
       featuredMovie.querySelector('.year').textContent = randomMovie.year;
@@ -422,6 +424,7 @@ async function ensureCategoriesLoaded() {
       const playButton = featuredMovie.querySelector('.btn-primary');
       if (playButton) {
         playButton.href = `player.html?id=${currentFeaturedMovieIndex}`;
+        playButton.setAttribute('aria-label', `Odtwórz film ${randomMovie.title}`);
         console.log('🎬 Featured movie play button link:', playButton.href);
       }
 
@@ -432,6 +435,7 @@ async function ensureCategoriesLoaded() {
         watchlistButton.onclick = null;
 
         watchlistButton.className = `btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'}`;
+        watchlistButton.setAttribute('aria-label', inWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia');
         watchlistButton.innerHTML = `
           <i data-lucide="${inWatchlist ? 'check' : 'plus'}"></i>
           <span>${inWatchlist ? 'Usuń z listy' : 'Dodaj do listy'}</span>
@@ -490,11 +494,12 @@ async function ensureCategoriesLoaded() {
       // Create category filter
       const filterHTML = `
         <div class="category-filter">
-          <input type="text" placeholder="Szukaj kategorii..." class="category-search">
+          <label for="category-search" class="sr-only">Szukaj kategorii</label>
+          <input type="text" id="category-search" placeholder="Szukaj kategorii..." class="category-search" aria-label="Wyszukaj kategorie filmów">
           <div class="category-tags">
-            <button class="category-tag${!selectedCategory ? ' active' : ''}" data-category="all">Wszystkie</button>
+            <button class="category-tag${!selectedCategory ? ' active' : ''}" data-category="all" aria-pressed="${!selectedCategory}">Wszystkie</button>
             ${Array.from(new Set(movies.flatMap(movie => movie.categories))).map(category =>
-              `<button class="category-tag${selectedCategory === category ? ' active' : ''}" data-category="${category}">${category}</button>`
+              `<button class="category-tag${selectedCategory === category ? ' active' : ''}" data-category="${category}" aria-pressed="${selectedCategory === category}">${category}</button>`
             ).join('')}
           </div>
         </div>
@@ -502,7 +507,7 @@ async function ensureCategoriesLoaded() {
 
       categoryContainer.insertAdjacentHTML('afterbegin', filterHTML);
 
-      const categorySearch = document.querySelector('.category-search');
+      const categorySearch = document.querySelector('#category-search');
       const categoryTags = document.querySelectorAll('.category-tag');
       const movieGrid = document.querySelector('.movie-grid');
 
@@ -536,6 +541,8 @@ async function ensureCategoriesLoaded() {
         tag.addEventListener('click', () => {
           categoryTags.forEach(t => t.classList.remove('active'));
           tag.classList.add('active');
+            t.setAttribute('aria-pressed', 'false');
+          tag.setAttribute('aria-pressed', 'true');
 
           const selectedCategory = tag.dataset.category;
           const filteredMovies = selectedCategory === 'all' ?
@@ -639,13 +646,15 @@ async function ensureCategoriesLoaded() {
           const categoryRow = document.createElement('div');
           categoryRow.className = 'category-row';
           categoryRow.dataset.category = categoryName; // Add data attribute for consistency
+          categoryRow.setAttribute('role', 'region');
+          categoryRow.setAttribute('aria-labelledby', `category-${categoryName.replace(/\s+/g, '-').toLowerCase()}-heading`);
 
           categoryRow.innerHTML = `
             <div class="category-header">
-              <h2>${categoryName}</h2>
+              <h2 id="category-${categoryName.replace(/\s+/g, '-').toLowerCase()}-heading">${categoryName}</h2>
               <a href="Kategorie.html?category=${encodeURIComponent(categoryName)}" class="view-all">Zobacz wszystkie</a>
             </div>
-            <div class="movie-row">
+            <div class="movie-row" role="list" aria-label="Filmy z kategorii ${categoryName}">
               ${categoryMovies.map((movie, index) => {
                 const originalIndex = movies.findIndex(m => m.title === movie.title);
                 return createMovieCard(movie, originalIndex);
@@ -667,6 +676,7 @@ async function ensureCategoriesLoaded() {
 
       if (watchlistButton) {
         watchlistButton.className = `btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button`;
+        watchlistButton.setAttribute('aria-label', inWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia');
         watchlistButton.innerHTML = `
           <i data-lucide="${inWatchlist ? 'check' : 'plus'}"></i>
           <span>${inWatchlist ? (inWatchlist ? 'Usuń z listy' : 'Dodaj do listy') : 'Dodaj do listy'}</span>
@@ -682,7 +692,7 @@ async function ensureCategoriesLoaded() {
         // Mark card as having overlay setup
         card.setAttribute('data-overlay-setup', 'true');
 
-        card.addEventListener('click', async () => {
+        const handleCardActivation = async () => {
           // Remove existing overlay if it exists
           if (currentOverlay) {
             currentOverlay.remove();
@@ -690,6 +700,9 @@ async function ensureCategoriesLoaded() {
 
           const overlay = document.createElement('div');
           overlay.className = 'movie-details-overlay';
+          overlay.setAttribute('role', 'dialog');
+          overlay.setAttribute('aria-modal', 'true');
+          overlay.setAttribute('aria-labelledby', 'movie-details-title');
 
           const movieId = parseInt(card.dataset.movieId);
           const movieData = movies[movieId];
@@ -697,13 +710,13 @@ async function ensureCategoriesLoaded() {
 
           overlay.innerHTML = `
             <div class="movie-details-content" data-movie-id="${movieId}">
-              <button class="movie-details-close">
+              <button class="movie-details-close" aria-label="Zamknij szczegóły filmu">
                 <i data-lucide="x"></i>
               </button>
               <div class="movie-details-header">
-                <img src="${movieData.imageUrl}" alt="${movieData.title}" class="movie-details-poster">
+                <img src="${movieData.imageUrl}" alt="Plakat filmu ${movieData.title}" class="movie-details-poster">
                 <div class="movie-details-info">
-                  <h1 class="movie-details-title">${movieData.title}</h1>
+                  <h1 id="movie-details-title" class="movie-details-title">${movieData.title}</h1>
                   <div class="movie-details-meta">
                     <span class="movie-details-genre">${movieData.categories.join(', ')}</span>
                     <span class="movie-details-rating">
@@ -715,15 +728,15 @@ async function ensureCategoriesLoaded() {
                   </div>
                   <p class="movie-details-description">${movieData.description}</p>
                   <div class="movie-details-actions">
-                    <a href="player.html?id=${movieId}" class="btn btn-primary play-button">
+                    <a href="player.html?id=${movieId}" class="btn btn-primary play-button" aria-label="Odtwórz film ${movieData.title}">
                       <i data-lucide="play"></i>
                       <span>Odtwórz film</span>
                     </a>
-                    <button class="btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button">
+                    <button class="btn ${inWatchlist ? 'btn-primary' : 'btn-secondary'} watchlist-button" aria-label="${inWatchlist ? 'Usuń z listy do obejrzenia' : 'Dodaj do listy do obejrzenia'}">
                       <i data-lucide="${inWatchlist ? 'check' : 'plus'}"></i>
                       <span>${inWatchlist ? (inWatchlist ? 'Usuń z listy' : 'Dodaj do listy') : 'Dodaj do listy'}</span>
                     </button>
-                     <a href="biuro_licencje.html" class="btn btn-secondary">
+                     <a href="biuro_licencje.html" class="btn btn-secondary" aria-label="Zgłoś się po licencję do filmu ${movieData.title}">
                       <i data-lucide="briefcase"></i>
                       <span>Zgłoś się po licencję</span>
                     </a>
@@ -741,6 +754,10 @@ async function ensureCategoriesLoaded() {
           requestAnimationFrame(() => {
             overlay.classList.add('active');
           });
+
+          // Focus the close button for keyboard users
+          const closeButton = overlay.querySelector('.movie-details-close');
+          closeButton.focus();
 
           // Setup watchlist button functionality
           const watchlistButton = overlay.querySelector('.watchlist-button');
@@ -764,26 +781,31 @@ async function ensureCategoriesLoaded() {
           }
 
           // Close button functionality
-          const closeButton = overlay.querySelector('.movie-details-close');
           closeButton.addEventListener('click', (e) => {
             e.stopPropagation();
             overlay.classList.remove('active');
             setTimeout(() => {
               overlay.remove();
               currentOverlay = null;
+              // Return focus to the movie card
+              card.focus();
             }, 300);
           });
 
           // Close on escape key
-          document.addEventListener('keydown', (e) => {
+          const handleEscape = (e) => {
             if (e.key === 'Escape' && overlay.classList.contains('active')) {
               overlay.classList.remove('active');
               setTimeout(() => {
                 overlay.remove();
                 currentOverlay = null;
+                // Return focus to the movie card
+                card.focus();
+                document.removeEventListener('keydown', handleEscape);
               }, 300);
             }
-          });
+          };
+          document.addEventListener('keydown', handleEscape);
 
           // Close when clicking outside
           overlay.addEventListener('click', (e) => {
@@ -792,9 +814,20 @@ async function ensureCategoriesLoaded() {
               setTimeout(() => {
                 overlay.remove();
                 currentOverlay = null;
+                // Return focus to the movie card
+                card.focus();
               }, 300);
             }
           });
+        };
+
+        // Add both click and keyboard event listeners
+        card.addEventListener('click', handleCardActivation);
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleCardActivation();
+          }
         });
       });
     }

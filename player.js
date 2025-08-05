@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Update page content with movie details
           document.title = `${movie.title} - WFO`;
           document.getElementById('movieTitle').textContent = movie.title;
+          document.getElementById('movieTitle').setAttribute('id', 'video-title'); // Update ID for aria-labelledby
           document.getElementById('movieRating').textContent = movie.rating;
           document.getElementById('movieYear').textContent = movie.year;
           document.getElementById('movieGenre').textContent = movie.genre;
@@ -217,18 +218,18 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             const videoWrapper = document.querySelector('.video-player');
             videoWrapper.innerHTML = `
-                    <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;">
+                    <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;" role="alert" aria-live="assertive">
                         <div style="margin-bottom: 20px;">
-                            <i data-lucide="user-x" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;"></i>
+                            <i data-lucide="user-x" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;" aria-hidden="true"></i>
                         </div>
                         <h3 style="margin-bottom: 15px; color: #ff6b6b;">Wymagane logowanie</h3>
                         <p style="margin-bottom: 20px; color: #ccc;">Aby obejrzeć ten film, musisz się zalogować.</p>
                         <div class="auth-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <a href="Logowanie.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #e50914; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;">
+                            <a href="Logowanie.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #e50914; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;" aria-label="Przejdź do strony logowania">
                                 <i data-lucide="log-in" style="width: 20px; height: 20px;"></i>
                                 <span>Zaloguj się</span>
                             </a>
-                            <a href="index.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #333; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;">
+                            <a href="index.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #333; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;" aria-label="Powróć do strony głównej">
                                 <i data-lucide="home" style="width: 20px; height: 20px;"></i>
                                 <span>Powrót do strony głównej</span>
                             </a>
@@ -304,9 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         max-width: 300px;
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                       `;
+                      notification.setAttribute('role', 'alert');
+                      notification.setAttribute('aria-live', 'assertive');
                       notification.innerHTML = `
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                          <i data-lucide="clock" style="width: 20px; height: 20px;"></i>
+                          <i data-lucide="clock" style="width: 20px; height: 20px;" aria-hidden="true"></i>
                           <span>Token wygasa za 15 sekund. Odśwież stronę, aby kontynuować.</span>
                         </div>
                       `;
@@ -325,14 +328,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('❌ Failed to generate embed URL:', data.error);
                     const videoWrapper = document.querySelector('.video-player');
                     videoWrapper.innerHTML = `
-                      <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;">
+                      <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;" role="alert" aria-live="assertive">
                         <div style="margin-bottom: 20px;">
-                          <i data-lucide="alert-circle" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;"></i>
+                          <i data-lucide="alert-circle" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;" aria-hidden="true"></i>
                         </div>
                         <h3 style="margin-bottom: 15px; color: #ff6b6b;">Błąd odtwarzacza</h3>
                         <p style="margin-bottom: 10px; color: #ccc;">Nie udało się załadować odtwarzacza dla filmu "${movie.title}"</p>
                         <p style="color: #888; font-size: 14px;">Błąd: ${data.error}</p>
-                        <button onclick="window.location.reload()" class="btn btn-primary" style="margin-top: 1rem;">
+                        <button onclick="window.location.reload()" class="btn btn-primary" style="margin-top: 1rem;" aria-label="Odśwież stronę, aby spróbować ponownie">
                           <i data-lucide="refresh-cw"></i>
                           <span>Spróbuj ponownie</span>
                         </button>
@@ -345,14 +348,14 @@ document.addEventListener('DOMContentLoaded', () => {
                   console.error('❌ Error fetching embed URL:', error);
                   const videoWrapper = document.querySelector('.video-player');
                   videoWrapper.innerHTML = `
-                    <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;">
+                    <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;" role="alert" aria-live="assertive">
                       <div style="margin-bottom: 20px;">
-                        <i data-lucide="wifi-off" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;"></i>
+                        <i data-lucide="wifi-off" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;" aria-hidden="true"></i>
                       </div>
                       <h3 style="margin-bottom: 15px; color: #ff6b6b;">Błąd połączenia</h3>
                       <p style="margin-bottom: 10px; color: #ccc;">Nie udało się połączyć z serwerem</p>
                       <p style="color: #888; font-size: 14px;">Sprawdź połączenie internetowe i spróbuj ponownie</p>
-                      <button onclick="window.location.reload()" class="btn btn-primary" style="margin-top: 1rem;">
+                      <button onclick="window.location.reload()" class="btn btn-primary" style="margin-top: 1rem;" aria-label="Odśwież stronę, aby spróbować ponownie">
                         <i data-lucide="refresh-cw"></i>
                         <span>Spróbuj ponownie</span>
                       </button>
@@ -367,9 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
               // Show payment required message and button
               const videoWrapper = document.querySelector('.video-player');
               videoWrapper.innerHTML = `
-                        <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;">
+                        <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;" role="alert" aria-live="assertive">
                             <div style="margin-bottom: 20px;">
-                                <i data-lucide="lock" style="width: 64px; height: 64px; color: #ffa500; margin-bottom: 20px;"></i>
+                                <i data-lucide="lock" style="width: 64px; height: 64px; color: #ffa500; margin-bottom: 20px;" aria-hidden="true"></i>
                             </div>
                             <h3 style="margin-bottom: 15px; color: #ffa500;">Brak licencji</h3>
                             <p style="margin-bottom: 10px; color: #ccc;">Aby obejrzeć film "<strong>${
@@ -377,15 +380,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             }</strong>", musisz wykupić dostęp.</p>
                             <p style="margin-bottom: 20px; color: #888; font-size: 14px;">Film jest dostępny w ramach płatnej subskrypcji.</p>
                             <div class="payment-options" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                                <button class="btn btn-primary" id="purchaseButton" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #ffa500; color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;">
+                                <button class="btn btn-primary" id="purchaseButton" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #ffa500; color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;" aria-label="Wykup dostęp do filmu ${movie.title}">
                                     <i data-lucide="credit-card" style="width: 20px; height: 20px;"></i>
                                     <span>Wykup dostęp</span>
                                 </button>
-                                <button class="btn btn-secondary" onclick="window.location.href='Filmy.html'" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #333; color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;">
+                                <button class="btn btn-secondary" onclick="window.location.href='Filmy.html'" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #333; color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;" aria-label="Powróć do listy filmów">
                                     <i data-lucide="arrow-left" style="width: 20px; height: 20px;"></i>
                                     <span>Powrót do filmów</span>
                                 </button>
-                                <a href="biuro_licencje.html" class="btn btn-primary">Zgłoś się po licencję</a>
+                                <a href="biuro_licencje.html" class="btn btn-primary" aria-label="Zgłoś się po licencję do filmu ${movie.title}">Zgłoś się po licencję</a>
                             </div>
                         </div>
                     `;
@@ -422,19 +425,19 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Available movie IDs:', moviesArray.map((m, index) => index));
           const videoWrapper = document.querySelector('.video-player');
           videoWrapper.innerHTML = `
-                <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;">
+                <div class="video-unavailable" style="text-align: center; padding: 60px 20px; color: #fff; background: #1a1a1a; border-radius: 10px;" role="alert" aria-live="assertive">
                     <div style="margin-bottom: 20px;">
-                      <i data-lucide="search-x" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;"></i>
+                      <i data-lucide="search-x" style="width: 64px; height: 64px; color: #ff6b6b; margin-bottom: 20px;" aria-hidden="true"></i>
                     </div>
                     <h3 style="margin-bottom: 15px; color: #ff6b6b;">Film nie został znaleziony</h3>
                     <p style="margin-bottom: 10px; color: #ccc;">Nie znaleziono filmu o ID: <strong>${movieId}</strong></p>
                     <p style="margin-bottom: 20px; color: #888; font-size: 14px;">Dostępne filmy: ${moviesArray.length}</p>
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                      <a href="Filmy.html" class="btn btn-primary">
+                      <a href="Filmy.html" class="btn btn-primary" aria-label="Zobacz wszystkie dostępne filmy">
                         <i data-lucide="film"></i>
                         <span>Zobacz wszystkie filmy</span>
                       </a>
-                      <a href="index.html" class="btn btn-secondary">
+                      <a href="index.html" class="btn btn-secondary" aria-label="Powróć do strony głównej">
                         <i data-lucide="home"></i>
                         <span>Strona główna</span>
                       </a>
